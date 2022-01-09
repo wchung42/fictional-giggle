@@ -1,10 +1,9 @@
-import sys
-from PyQt6.QtWidgets import QApplication, QCheckBox, QLineEdit, QWidget, QGridLayout, QPushButton, QLabel, QHBoxLayout
+from PyQt6.QtWidgets import QCheckBox, QLineEdit, QWidget, QGridLayout, QPushButton, QLabel, QHBoxLayout
 from PyQt6.QtGui import QIntValidator, QFont
 from PyQt6.QtCore import Qt
-from generate import string_generator
+from string_generator import StringGenerator
 
-class MyWindow(QWidget):
+class App(QWidget):
     def __init__(self):
         super().__init__()
         self.setGeometry(200, 200, 225, 175)
@@ -14,6 +13,8 @@ class MyWindow(QWidget):
         self.uppercase = False
         self.numbers = False
         self.specials = False
+
+        self.string_generator = StringGenerator()
 
     def init_ui(self):
         layout = QGridLayout()
@@ -54,7 +55,13 @@ class MyWindow(QWidget):
         self.setLayout(layout)
 
     def get_output(self):
-        output = string_generator(int(self.length_input.text()), upper=self.uppercase, numbers=self.numbers, specials=self.specials)
+        passes_validation = False
+        while not passes_validation:
+            output = self.string_generator.generate(int(self.length_input.text()), upper=self.uppercase, numbers=self.numbers, specials=self.specials)
+            passes_validation = self.string_generator.validate(output, upper=self.uppercase, numbers=self.numbers, specials=self.specials)
+            if not passes_validation: print('Failed validation')
+        
+        print('Passed validation')
         self.output_string.setText(f'{output}')
 
     def btn_state(self, btn):
@@ -68,11 +75,3 @@ class MyWindow(QWidget):
             self.specials = True if btn.isChecked() else False
             
 
-def window():
-    app = QApplication(sys.argv)
-    win = MyWindow()
-    win.show()
-    sys.exit(app.exec())
-
-if __name__=='__main__':
-    window()

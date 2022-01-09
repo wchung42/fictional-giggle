@@ -1,20 +1,12 @@
-import random
+from PyQt6.QtWidgets import QApplication
+from ui import App
+import sys
 
-def generate_string(length: int, upper: bool, number: bool, special: bool):
-    alpha_lower = 'abcdefghijklmnopqrstuvwxyz'
-    alpha_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    numbers = '1234567890'
-    specials = '!#$%&*?@^'
+def window():
+    app = QApplication(sys.argv)
+    win = App()
+    win.show()
+    sys.exit(app.exec())
 
-    available_chars = alpha_lower
-    if upper: available_chars += alpha_upper
-    if numbers: available_chars += numbers
-    if special: available_chars += specials
-
-    result = ''
-    for _ in range(length):
-        result += random.choice(available_chars)
-    
-    return result
-
-print(generate_string(15, upper=True, number=True, special=True))
+if __name__=='__main__':
+    window()
