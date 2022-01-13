@@ -1,0 +1,6 @@
+ACCESS_ID = 'j7s4pya3b86jnhwaycy5'
+ACCESS_KEY = '85e7edd3986249c084aed3177bb76bf6'
+USERNAME = 'willchung42@gmail.com'
+PASSWORD = 'abcde1234'
+ASSET_ID = '1478069428221419520'
+DEVICE_ID = ''
