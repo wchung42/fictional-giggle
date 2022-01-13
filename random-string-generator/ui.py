@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QCheckBox, QLineEdit, QWidget, QGridLayout, QPushButton, QLabel, QHBoxLayout
 from PyQt6.QtGui import QIntValidator, QIcon
 from PyQt6.QtCore import QTimer
-import pyclip
+import pyperclip
 from string_generator import StringGenerator
 
 # class LineEdit(QLineEdit):
@@ -107,7 +107,7 @@ class App(QWidget):
     def copy(self):
         to_copy = self.output_string.text()
         if to_copy != '':
-            pyclip.copy(to_copy)
+            pyperclip.copy(to_copy)
             self.info.setText('Copied.')
             QTimer.singleShot(2500, self.reset_info)
 
