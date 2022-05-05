@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data['city'] }} Weather</title>
+</head>
+<body>
+    <div>
+        <h1>Here is the weather for {{ data['city'].upper() }}:</h1>
+        <div class="weather-container">
+            <div class="weather-icon">
+                <img src="{{ data['icon'] }}">
+            </div>
+            <h3>{{ data['weather'] }}</h3>
+        </div>
+        </b><p>{{ data['description'] }}</p>
+        <div class="temp-container">
+            <b><span>Current temp:</span></b><span> {{ data['temp'] }}°
+                F</span><br>
+            <b><span>Feels like:</span></b><span> {{ data['feels_like'] }}° F</span><br>
+            <b><span>Min temp:</span></b><span> {{ data['temp_min'] }}°
+                F</span><br>
+            <b><span>Max temp:</span></b><span> {{ data['temp_max'] }}°
+                F</span><br>
+            <b><span></span></b>
+        </div>
+        
+        
+    </div>
+    
+</body>
+</html>

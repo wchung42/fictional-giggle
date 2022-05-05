@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weathering With You</title>
+</head>
+<body>
+    <h1>Weathering With You</h1>
+    <p><b>Input a city: </b></p>
+    <form action="{{ url_for('get_weather') }}", method="post">
+        <input type="text" id="city" name="city">
+        <input type="submit" value="Submit">
+    </form>
+    
+
+</body>
+</html>
